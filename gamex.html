@@ -1,0 +1,174 @@
+<html>
+<head>
+<title>GameX</title>
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCw6_m6B5mMcRjjvaPoIZ0bshTnlWAJCLI",
+    authDomain: "gamex-e5841.firebaseapp.com",
+    databaseURL: "https://gamex-e5841.firebaseio.com",
+    projectId: "gamex-e5841",
+    storageBucket: "gamex-e5841.appspot.com",
+    messagingSenderId: "1028504611540",
+    appId: "1:1028504611540:web:ccf1d6459189ce9c1e6941",
+    measurementId: "G-RZPXWV05Z8"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  const auth = firebase.auth();
+  
+
+
+function signOut(){
+		
+		auth.signOut();
+		alert("Signed Out");
+		
+	}
+	
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var displayName = user.displayName;
+    var email = user.email;
+    var emailVerified = user.emailVerified;
+    var photoURL = user.photoURL;
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    var providerData = user.providerData;
+    redirect();
+    // ...
+  } else {
+    // User is signed out.
+    // ...
+    window.location.href = './index.html';
+  }
+});
+
+
+
+</script>
+<!-- for buttons -->
+<style>
+#loading-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 20px;
+  padding: 15px 50px;
+  position: relative;
+}
+
+button:before {
+  transition: all 0.8s cubic-bezier(0.7, -0.5, 0.2, 2);
+  content: '';
+  width: 1%;
+  height: 100%;
+  background: #fcfcfc;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+button span {
+  mix-blend-mode: darken;
+}
+
+button:hover:before {
+  background: #eb717f;
+  width: 100%;
+}
+#txt{
+  text-decoration: #070707;
+}
+body{
+  background-image: image("login system\bg1.jpg");
+  text-decoration: rgb(54, 118, 173);
+  color: rgb(82, 36, 36);
+}
+
+a{
+  color: rgb(255, 255, 255);  
+  
+  
+}
+span{
+  font-size: 200%;
+}
+
+
+</style>
+
+
+</head>
+<body style="background-image: url('1.jpg');background-repeat:round;" topmargin="50"background="8.jpg"text="silver"
+ link="silver" alink="red" vlink="purple" >
+<center ><img src="10.jpg"height="140"width="230" align="bottom"></center>
+<h1><u><center><font color=" Silver"> WELCOME TO GAMEX!!!!</font></center></u></h1>
+<h2 style="text-align-last: center;"><font color="silver">We are here to provide you the best online gaming experience ever.</font><br>
+ </h2> 
+
+<ul type=disc>
+  <div id="loading-btn">
+    <a href="Shoot\shoot.html" ><button><span><font color="black">Square Shoot</font></span></button></a><br>
+  </div>
+  <div id="loading-btn">
+     <a href="Pong\pong.html" ><button><span><font color="black">Pong</font></span></button></a><br>
+  </div>
+  <div id="loading-btn">
+     <a href="Square Mania\eat.html"><button><span><font color="black">Hungry Square</font></span></button></a><br>
+  </div>
+  <div id="loading-btn">
+ <a href="0hh1\index.html" ><button><span><font color="black">Ohh1</font></span></button></a><br>
+  </div>
+<div id="loading-btn">
+ <a href="hextris\index.html" ><button><span><font color="black">Hextrix</font></span></button></a><br>
+  </div>
+  <div id="loading-btn">
+    <a href="typer-master\typer.html" ><button><span><font color="black">Typing-Master</font></span></button></a><br>
+     </div>
+
+
+  
+  
+
+</ul>
+
+<!-- <div id="loading-btn">
+  <button> <span> <font color="black">Sing OUT</font></span></button>
+ <input type="button" class="btn" id= "loading-btn" value="Sign Out" onclick="signOut()" >
+   </div> -->
+
+<div>
+  <button  onclick="signOut()"> <span><font color="black">Sign Out</font></span></button>
+</div>
+
+
+
+</body>
+</html>

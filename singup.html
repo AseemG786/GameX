@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-auth.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+
+
+<!-- for nav bar -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyCw6_m6B5mMcRjjvaPoIZ0bshTnlWAJCLI",
+    authDomain: "gamex-e5841.firebaseapp.com",
+    databaseURL: "https://gamex-e5841.firebaseio.com",
+    projectId: "gamex-e5841",
+    storageBucket: "gamex-e5841.appspot.com",
+    messagingSenderId: "1028504611540",
+    appId: "1:1028504611540:web:ccf1d6459189ce9c1e6941",
+    measurementId: "G-RZPXWV05Z8"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+  const auth = firebase.auth();
+  
+function redirect(){
+   window.location.href = './gamex.html';
+}
+
+
+function signUp(){
+		
+		var email = document.getElementById("email");
+		var password = document.getElementById("password");
+		
+		const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
+		promise.catch(e => alert(e.message));
+		
+	}
+	
+	
+
+
+  function signIn(){
+		console.log("siging in"	);
+		var email = document.getElementById("email");
+		var password = document.getElementById("password");
+		console.log(password.value);
+		const promise = auth.signInWithEmailAndPassword(email.value, password.value);
+		promise.catch(e => alert(e.message));
+		
+		
+		
+		
+	}
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    // User is signed in.
+    var displayName = user.displayName;
+    var email = user.email;
+    var emailVerified = user.emailVerified;
+    var photoURL = user.photoURL;
+    var isAnonymous = user.isAnonymous;
+    var uid = user.uid;
+    var providerData = user.providerData;
+    redirect();
+    // ...
+  } else {
+    // User is signed out.
+    // ...
+  }
+});
+
+
+</script>
+<style>
+    .log{
+    margin-top: 10px;
+      margin-right: 30px;
+      font-size: large;
+    }
+    .sing
+    {
+      margin-right: 30px;
+    }
+   
+  </style>
+
+
+  </head>
+  <body>
+
+    <!-- nav bar -->
+    
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">GameX</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Demo Games <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Game 1</a></li>
+          <li><a href="#">Game 2</a></li>
+          <li><a href="#">Game 3</a></li>
+        </ul>
+      </li>
+      <!-- <li><a href="#">Page 2</a></li> -->
+    </ul>
+    <ul class="nav navbar-nav navbar-right log" >
+      <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="login system\singup.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+
+      <a href="singup.html" class="sing"> <span class="glyphicon glyphicon-user "></span> Sign Up</a>
+      
+      <a href="index.html"> <span class="glyphicon glyphicon-log-in"></span> Log In</a>
+    </ul>
+  </div>
+</nav>
+<div class="login-box">
+  <h1>Sign Up</h1>
+  <div class="textbox">
+    <i class="fas fa-user"></i>
+    <input type="text" placeholder="Username" id="name">
+  </div>
+  <div class="textbox">
+    <i class="fas fa-user"></i>
+    <input type="text" placeholder="Age" id="age">
+  </div>
+  <div class="textbox">
+    <i class="fas fa-user"></i>
+    <input type="text" placeholder="User Email" id="email">
+  </div>
+
+  <div class="textbox">
+    <i class="fas fa-lock"></i>
+    <input type="password" placeholder="New Password" id="password">
+  </div>
+  <div class="textbox">
+    <i class="fas fa-lock"></i>
+    <input type="password" placeholder="Conform Password" id="password">
+  </div>
+
+  <input type="button" class="btn" value="Sign in" onclick="signIn()">
+
+
+  <input type="button" class="btn" value="Sign Up" onclick="signUp()">
+</div>
+  </body>
+</html>
